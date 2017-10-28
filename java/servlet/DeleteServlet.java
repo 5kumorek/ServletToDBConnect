@@ -1,5 +1,6 @@
 package servlet;
 
+import databaseHelper.DeleteRecord;
 import databaseHelper.InsertRecord;
 
 import java.io.IOException;
@@ -23,26 +24,16 @@ public class DeleteServlet extends HttpServlet {
         String tableName = request.getParameter("tableName");
         request.setAttribute("tableName", tableName);
 
-        int countOfVariables = Integer.parseInt(request.getParameter("how_many"));
-        String[] arrayOfValues = new String[countOfVariables];
-        for(int i=0;i<countOfVariables;i++) {
-            arrayOfValues[i]=request.getParameter(""+i);
-        }
+        int recordToDelete = Integer.parseInt(request.getParameter("recordToDelete"));
 
-        //now I send record to preperty method
-        InsertRecord service = new InsertRecord(tableName);
-        boolean isInsert = true;
+        //now I send index of record to delete
+        DeleteRecord service = new DeleteRecord(tableName);
+
         String exception;
         try {
-            isInsert = service.insertRecord(arrayOfValues);
-            exception = service.getException();
+            service.deleteRecord(recordToDelete);
         } catch (SQLException e) {
-            isInsert = false;
             exception = e.getMessage();
-        }
-
-        if(!isInsert)
-        {
             request.setAttribute("exception", exception);
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher("table");

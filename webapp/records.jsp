@@ -21,7 +21,7 @@
 
 <div class="page-header"><h1>Tabela: <c:out value="${tableName}"/></h1></div>
 <div class="modal-body-row" >
-    <div class="col-md-5">
+    <div class="col-md-6">
         <div class="container-fluid">
             <table class="table table-inverse table table-bordered">
                 <thead class="thead-inverse">
@@ -32,39 +32,29 @@
                 </thead>
                 <tbody>
                 <c:forEach items="${records}" var="row"  varStatus="loop">
-                        <tr >
+                        <tr>
                             <c:forEach items="${row}" var="record" varStatus="loop_2">
                                 <c:choose>
                                     <c:when test="${loop_2.index=='0'}" ><th scope="row">${record}</th></c:when>
                                     <c:otherwise><td>${record}</td></c:otherwise>
                                 </c:choose>
                             </c:forEach>
-                            <td><form method="post">
-                                <input type="hidden" name="tableName">
-                                <button type="submit" class="btn btn-danger btn-sm" data-toggle="collapse">
+                            <!-- tutaj tworzę dla każdego recordu forma aby submitować po każdym -->
+                            <td>
+                                <button type="submit" class="btn btn-danger btn-sm" data-toggle="collapse" onclick="document.getElementById('recordToDelete').value = '<c:out value="${loop.index}"/>'; document.getElementById('myForm').submit();">
                                     <span class="glyphicon glyphicon-minus"></span>
                                 </button>
-                            </form></td>
+                            </td>
                         </tr>
                 </c:forEach>
                 </tbody>
             </table>
         </div>
     </div>
-<!--    <div class="col-md-1">
-        <div class="container-fluid">
-            <table class="table table-borderless" style="border: none;">
-                <thead class="thead-inverse">
-                    <th>c</th>
-                </thead>
-                <tbody>
-                <tr><td style="border: none;"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></td></tr>
-                <tr><td><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></td></tr>
-                <tr><td><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>-->
+<form action="delete" method="post" id="myForm">
+    <input type="hidden" value="" name="recordToDelete" id="recordToDelete">
+    <input type="hidden" name="tableName" value=<c:out value="${tableName}"/> >
+</form>
 <div class="col-md-6">
     <div class="container-fluid">
         <div class="panel panel-success">

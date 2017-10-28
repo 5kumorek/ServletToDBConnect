@@ -18,17 +18,16 @@ import javax.servlet.http.HttpServletResponse;
         urlPatterns = {"/table"}
 )
 public class TableServlet extends HttpServlet {
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String tableName = request.getParameter("tableName");
         request.setAttribute("tableName", tableName);
-        Table service = new Table(tableName);
+        Table myService = new Table(tableName);
 
-        ArrayList<ArrayList<String>> myTable=service.getTableRecords();
-        ArrayList<String> myColumns=service.getTableColumns();
-        ArrayList<String> myTypes=service.getColumnTypes();
+        ArrayList<ArrayList<String>> myTable=myService.getTableRecords();
+        ArrayList<String> myColumns=myService.getTableColumns();
+        ArrayList<String> myTypes=myService.getColumnTypes();
         request.setAttribute("records", myTable);
         request.setAttribute("columns", myColumns);
         request.setAttribute("types", myTypes);
