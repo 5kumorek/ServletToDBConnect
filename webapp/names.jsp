@@ -34,7 +34,7 @@
                         <td>
                             <form action="table" method="post">
                                 <input type="hidden" name="tableName" value=${name}>
-                                <button type="submit" class="btn btn-primary btn-margin" data-toggle="collapse" data-target="#zad1pascal">
+                                <button type="submit" class="btn btn-primary btn-margin" data-toggle="collapse" data-target="#">
                                         Zobacz Tabele
                                 </button>
                             </form>

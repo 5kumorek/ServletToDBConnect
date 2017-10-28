@@ -17,9 +17,9 @@
     <div class="modal-body-row" >
         <div class="col-md-4">
             <div class="page-header"><h1>Stwórz zapytanie</h1></div>
-            <form action="query" method="post">
+            <form action="query" method="post" id="myForm">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="query">
+                    <input type="text" class="form-control" placeholder="Search" name="query" id="query">
                     <div class="input-group-btn">
                         <button class="btn btn-default" type="submit">
                             <i class="glyphicon glyphicon-search"></i>
@@ -27,6 +27,32 @@
                     </div>
                 </div>
             </form>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="panel-heading"><p class="h3">Wypróbuj te zapytania</p></div>
+                    <div class="btn-group" role="group">
+                        <input type="hidden" name="tableName" value="select * from company;">
+                        <button type="submit" style="font-size:smaller;" class="btn btn-success btn-lg btn-block" data-toggle="collapse" data-target="#" onclick="document.getElementById('query').value = 'select * from company;'; document.getElementById('myForm').submit();">
+                            SELECT COUNT(*) FROM emp;
+                        </button>
+                        <button type="submit" style="font-size:smaller;" class="btn btn-info btn-lg btn-block" data-toggle="collapse" data-target="#" onclick="document.getElementById('query').value = 'select * from company;'; document.getElementById('myForm').submit();">
+                            SELECT COUNT(*), lname, town <br>FROM customer GROUP BY town, lname;
+                        </button>
+                        <button type="submit" style="font-size:smaller;" class="btn btn-warning btn-lg btn-block" data-toggle="collapse" data-target="#" onclick="document.getElementById('query').value = 'select * from company;'; document.getElementById('myForm').submit();">
+                            SELECT lname, town FROM customer<br> WHERE town <> 'Lincoln';
+                        </button>
+                        <button type="submit" style="font-size:smaller;" class="btn btn-default btn-lg btn-block" data-toggle="collapse" data-target="#" onclick="document.getElementById('query').value = 'select * from company;'; document.getElementById('myForm').submit();">
+                            SELECT COUNT(*) AS number ,lname, town FROM customer<br> WHERE town <> 'Lincoln'
+                            GROUP BY lname, town;
+                        </button>
+                        <button type="submit" style="font-size:smaller;" class="btn btn-primary btn-lg btn-block" data-toggle="collapse" data-target="#" onclick="document.getElementById('query').value = 'select * from company;'; document.getElementById('myForm').submit();">
+                            SELECT COUNT(*) AS number ,lname, town FROM<br> customer WHERE town <> 'Lincoln'
+                            GROUP BY lname,<br> town HAVING COUNT(*)>1;
+                        </button>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <div class="col-md-8">
             <c:catch var="records">
