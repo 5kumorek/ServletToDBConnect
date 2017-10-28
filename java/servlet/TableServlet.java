@@ -3,6 +3,7 @@ package servlet;
 import databaseHelper.Table;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -23,14 +24,20 @@ public class TableServlet extends HttpServlet {
             throws ServletException, IOException {
         String tableName = request.getParameter("tableName");
         request.setAttribute("tableName", tableName);
-        Table myService = new Table(tableName);
 
-        ArrayList<ArrayList<String>> myTable=myService.getTableRecords();
-        ArrayList<String> myColumns=myService.getTableColumns();
-        ArrayList<String> myTypes=myService.getColumnTypes();
-        request.setAttribute("records", myTable);
-        request.setAttribute("columns", myColumns);
-        request.setAttribute("types", myTypes);
+        String query = "SELECT * FROM " + tableName;
+
+        try {
+            Table myService = new Table(query);
+            ArrayList<ArrayList<String>> myTable = myService.getTableRecords();
+            ArrayList<String> myColumns = myService.getTableColumns();
+            ArrayList<String> myTypes = myService.getColumnTypes(tableName);
+            request.setAttribute("records", myTable);
+            request.setAttribute("columns", myColumns);
+            request.setAttribute("types", myTypes);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("records.jsp");

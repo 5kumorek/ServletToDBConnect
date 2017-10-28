@@ -38,16 +38,16 @@
                 <li class="">
                     <!--Todo-->
                     <a href="start">
-                        <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>&nbsp;Tabele
+                        <span class="glyphicon glyphicon-list" aria-hidden="true"></span>&nbsp;Tabele
+                    </a>
+                </li>
+                <li class="">
+                    <a href="query.jsp">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp;Query
                     </a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right" >
-                <li class="">
-                    <a href="#">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Register
-                    </a>
-                </li>
                 <li class="">
                     <a href="#">
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Elo ziom

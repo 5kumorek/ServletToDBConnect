@@ -17,7 +17,6 @@ public class Table {
     private ResultSet resultForTable;
     private ResultSetMetaData rsmd;
     private DatabaseMetaData dtmd;
-    private String tableName;
     private int countOfColumns;
     private Map<Integer, String> sqlTypes=new HashMap<Integer, String>(){
         {
@@ -31,23 +30,15 @@ public class Table {
             put(CHAR, "char");
         }};
     //constructor, where I initialize variables
-    public Table(String tableName){
-        this.tableName = tableName;
+    public Table(String query) throws SQLException{
         database = new DBConnect();
-        try {
             //I try get of records
             Statement stat = database.conn.createStatement();
-            String query = "SELECT * FROM " + tableName + ";";
-            result = stat.executeQuery(query);
+            result = stat.executeQuery(query+";");
             rsmd = result.getMetaData();
             dtmd = database.conn.getMetaData();
-            resultForTable = dtmd.getColumns(null, null, tableName, "%");
-
             //at first, I look how many columns is in table
             countOfColumns = rsmd.getColumnCount();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
     //this method is created, to checking name of columns
     public ArrayList<String> getTableColumns() {
@@ -67,9 +58,11 @@ public class Table {
         return namesOfColumns;
     }
     //this method is created, to checking types of columns
-    public ArrayList<String> getColumnTypes() {
+    public ArrayList<String> getColumnTypes(String tableName) {
         ArrayList<String> nameOfTypes=new ArrayList<String>();
+
         try {
+            resultForTable = dtmd.getColumns(null, null, tableName, "%");
             //firstly I generate table with default variables fot each column
             ArrayList<String> defaults=new ArrayList<String>();
             while(resultForTable.next()) {
@@ -125,5 +118,4 @@ public class Table {
             newType.append(" default ").append(defaultValue);
         return newType.toString();
     }
-
 }
