@@ -42,23 +42,17 @@
                     </a>
                 </li>
                 <li class="">
+                    <a href="class">
+                        <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp;Dziennik
+                    </a>
+                </li>
+                <li class="">
                     <a href="query.jsp">
-                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp;Query
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp;Zapytanie
                     </a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right" >
-                <li class="">
-                    <a href="#">
-                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Elo ziom
-                    </a>
-                </li>
-                <li class="">
-                    <!--Todo-->
-                    <a href="#">
-                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;Log Out
-                    </a>
-                </li>
                 <li class="">
                     <a href="#">
                         <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;Log In

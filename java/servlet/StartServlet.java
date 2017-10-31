@@ -2,6 +2,7 @@ package servlet;
 
 import databaseHelper.Names;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -20,11 +21,16 @@ public class StartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Names service = new Names();
-        ArrayList<String> myNames=service.getNames();
-        request.setAttribute("names", myNames);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("names.jsp");
-        dispatcher.forward(request, response);
+        try {
+            Names service = new Names();
+            ArrayList<String> myNames = service.getNames();
+            request.setAttribute("names", myNames);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("names.jsp");
+            dispatcher.forward(request, response);
+        }catch(SQLException s)
+        {
+            s.printStackTrace();
+        }
     }
 
 }

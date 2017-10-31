@@ -25,6 +25,7 @@
                             <i class="glyphicon glyphicon-search"></i>
                         </button>
                     </div>
+                    <input type="hidden" name="page" value="query.jsp">
                 </div>
             </form>
             <div class="panel panel-default">
@@ -32,8 +33,15 @@
                     <div class="panel-heading"><p class="h3">Wypróbuj te zapytania</p></div>
                     <div class="btn-group" role="group">
                         <input type="hidden" name="tableName" value="select * from company;">
-                        <button type="submit" style="font-size:smaller;" class="btn btn-success btn-lg btn-block" data-toggle="collapse" data-target="#" onclick="document.getElementById('query').value = 'select * from company;'; document.getElementById('myForm').submit();">
-                            SELECT COUNT(*) FROM emp;
+                        <button type="submit" style="font-size:smaller;" class="btn btn-success btn-lg btn-block" data-toggle="collapse" data-target="#" onclick="document.getElementById('query').value = 'select u.imie, u.nazwisko,'+
+'                            p.nazwa, o.waga_oceny as ocena from oceny as o inner join uczniowie as u '+
+'                            on o.id_ucznia=u.id_ucznia inner join przedmioty as'+
+'                            p on o.id_przedmiotu=p.id_przedmiotu;'; document.getElementById('myForm').submit();">
+                            select o.waga_oceny as ocena, u.imie, u.nazwisko,<br>
+                            p.nazwa from oceny as o inner join uczniowie as u <br>
+                            on o.id_ucznia=u.id_ucznia inner join przedmioty as<br>
+                            p on o.id_przedmiotu=p.id_przedmiotu;
+
                         </button>
                         <button type="submit" style="font-size:smaller;" class="btn btn-info btn-lg btn-block" data-toggle="collapse" data-target="#" onclick="document.getElementById('query').value = 'select * from company;'; document.getElementById('myForm').submit();">
                             SELECT COUNT(*), lname, town <br>FROM customer GROUP BY town, lname;

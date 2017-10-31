@@ -21,6 +21,7 @@ public class QueryServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String sqlQuery = request.getParameter("query");
+        String myPage = request.getParameter("page");
 
         try {
             String exception;
@@ -40,7 +41,7 @@ public class QueryServlet extends HttpServlet {
         }
 
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("query.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher(myPage);
         dispatcher.forward(request, response);
     }
 }

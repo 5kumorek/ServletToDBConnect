@@ -11,18 +11,14 @@ public class Names {
         database = new DBConnect();
     }
 
-    public ArrayList<String> getNames() {
+    public ArrayList<String> getNames() throws SQLException{
         ArrayList<String> listToReturn = new ArrayList<String>();
         Statement stat = null;
-        try {
-            //I try get of names of tables
-            DatabaseMetaData md = database.conn.getMetaData();
-            ResultSet rs = md.getTables(null, null, null, new String[]{"TABLE"});
-            while (rs.next()) {
-                listToReturn.add(rs.getString("TABLE_NAME"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        //I try get of names of tables
+        DatabaseMetaData md = database.conn.getMetaData();
+        ResultSet rs = md.getTables(null, null, null, new String[]{"TABLE"});
+        while (rs.next()) {
+            listToReturn.add(rs.getString("TABLE_NAME"));
         }
         return listToReturn;
     }
