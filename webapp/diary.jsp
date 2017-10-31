@@ -28,7 +28,7 @@
                         <div id="klasy<c:out value="${generation.get(0)}"/>" class="collapse">
                             <ul>
                                 <c:forEach items="${classes.get(generation.get(0)-1)}" var="clas" varStatus="loop">
-                                    <li><a style="cursor: pointer;" target="_blank" onclick="document.getElementById('query').value = 'select u.id_ucznia, u.imie, u.nazwisko,' +
+                                    <li><a style="cursor: pointer;" target="_blank" onclick="document.getElementById('query').value = 'select u.id_ucznia, u.numer, u.imie, u.nazwisko,' +
                                             'ROUND(sum(o.ocena*o.waga_oceny)/sum(waga_oceny),2) as srednia from oceny as o, uczniowie as u where o.id_ucznia=u.id_ucznia and '+
                                             'u.id_klasy=<c:out value="${clas.get(2)}"/> group by u.id_ucznia order by u.nazwisko;';
                                             document.getElementById('myForm').submit();">${clas.get(1)} ${clas.get(0)}</a></li>

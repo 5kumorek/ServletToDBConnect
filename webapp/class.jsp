@@ -24,7 +24,9 @@
                         <table class="table table-inverse table table-bordered">
                             <thead class="thead-inverse">
                             <c:forEach items="${columns}" var="column" varStatus="loop_2">
-                                <th>${column}</th>
+                                <c:choose>
+                                    <c:when test="${loop_2.index!='0'}" ><th>${column}</th></c:when>
+                                </c:choose>
                             </c:forEach>
                             <th>Oceny</th>
                             </thead>
@@ -32,7 +34,9 @@
                             <c:forEach items="${records}" var="row"  varStatus="loop">
                                 <tr>
                                     <c:forEach items="${row}" var="record" varStatus="loop_2">
-                                        <td>${record}</td>
+                                        <c:choose>
+                                            <c:when test="${loop_2.index!='0'}" ><td>${record}</td></c:when>
+                                        </c:choose>
                                     </c:forEach>
                                     <td><a href="#" onclick="document.getElementById('query').value='select u.imie, u.nazwisko, '+
                                     'o.ocena, p.nazwa as przedmiot, w.za_co, o.waga_oceny as waga from '+
