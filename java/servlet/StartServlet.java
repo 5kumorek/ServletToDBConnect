@@ -24,7 +24,11 @@ public class StartServlet extends HttpServlet {
         try {
             Names service = new Names();
             ArrayList<String> myNames = service.getNames();
+            ArrayList<Integer> recordsCount = service.recordsCount();
+            ArrayList<Integer> columnsCount = service.columnsCount();
             request.setAttribute("names", myNames);
+            request.setAttribute("records", recordsCount);
+            request.setAttribute("columns", columnsCount);
             RequestDispatcher dispatcher = request.getRequestDispatcher("names.jsp");
             dispatcher.forward(request, response);
         }catch(SQLException s)

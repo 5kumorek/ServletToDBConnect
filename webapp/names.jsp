@@ -15,22 +15,25 @@
     <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
 </head>
 <body>
-<div class="row">
+<jsp:useBean id="names" type="java.util.ArrayList" scope="request" />
+<jsp:useBean id="columns" type="java.util.ArrayList" scope="request" />
+<jsp:useBean id="records" type="java.util.ArrayList" scope="request" />
+<div class="row" style="margin-left:170px;margin-right:170px;">
     <div class="col-sm-12">
         <div class="panel panel-default">
             <div class="panel-body">
                 <table class="table">
                     <tr>
                         <th>Nazwa tabeli</th>
+                        <th>Liczba rekordów</th>
+                        <th>Liczba kolumn</th>
                         <th>Link</th>
-                        <th>Ilość kolumn</th>
-                        <th>Ilość recordów</th>
                     </tr>
                     <c:forEach items="${names}" var="name"  varStatus="loop">
                     <tr>
                         <td style="text-transform: uppercase;">${name}</td>
-                        <td>5</td>
-                        <td>5</td>
+                        <td>${records.get(loop.index)}</td>
+                        <td>${columns.get(loop.index)}</td>
                         <td>
                             <form action="table" method="post">
                                 <input type="hidden" name="tableName" value=${name}>

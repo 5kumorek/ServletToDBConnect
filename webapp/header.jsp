@@ -26,9 +26,6 @@
                 <span class="icon-bar"></span>
             </button>
             <!--when clicked, it redirects to the homepage-->
-            <a class="navbar-left" href="#">
-                <img src="" height="47" class="embed-responsive-item"/>
-            </a>
             <a class="navbar-brand" href="index.jsp">Baza danych</a>
         </div>
 
