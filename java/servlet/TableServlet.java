@@ -36,6 +36,7 @@ public class TableServlet extends HttpServlet {
             request.setAttribute("columns", myColumns);
             request.setAttribute("types", myTypes);
         } catch (SQLException e) {
+            System.out.println("elo, query jest "+query);
             e.printStackTrace();
         }
 

@@ -34,6 +34,9 @@ public class StartServlet extends HttpServlet {
         }catch(SQLException s)
         {
             s.printStackTrace();
+        }catch(IOException s)
+        {
+            s.printStackTrace();
         }
     }
 
