@@ -17,8 +17,17 @@ import javax.servlet.http.HttpServletResponse;
         name = "InsertServlet",
         urlPatterns = {"/insert"}
 )
+/**
+ \class InsertServlet provide information Available adding of records to db
+ */
 public class InsertServlet extends HttpServlet {
 
+    /**
+     \brief doGet function obtain data by get method, processed it and send to jsp
+     \param[in] request object, which passes argument to jsp
+     \param[in] response object, which obtain argument from jsp
+     \throws ServletException, IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

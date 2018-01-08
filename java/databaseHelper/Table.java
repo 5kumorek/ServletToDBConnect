@@ -9,7 +9,9 @@ import static java.sql.Types.*;
 /**
  * Created by radoslaw on 20.09.17.
  */
-//this class is responsible for printing content of table
+/**
+ * \class Names provide information This object provide detailed information about table
+ */
 public class Table {
     //prywatne składowe klasy
     private DBConnect database;
@@ -29,7 +31,11 @@ public class Table {
             put(VARCHAR, "varchar");
             put(CHAR, "char");
         }};
-    //constructor, where I initialize variables
+    /**
+     \brief Constructor initialize DBConnect object, execute query, and set valuable variables
+     \param[in] query - query which will be execute
+     \throws SQLException
+     */
     public Table(String query) throws SQLException{
         database = new DBConnect();
             //I try get of records
@@ -40,7 +46,10 @@ public class Table {
             //at first, I look how many columns is in table
             countOfColumns = rsmd.getColumnCount();
     }
-    //this method is created, to checking name of columns
+    /**
+     \brief method gets columns names in table
+     \return arraylist contained columns names
+     */
     public ArrayList<String> getTableColumns() {
         ArrayList<String> namesOfColumns=new ArrayList<String>();
         Statement stat = null;
@@ -57,7 +66,10 @@ public class Table {
         }
         return namesOfColumns;
     }
-    //this method is created, to checking types of columns
+    /**
+     \brief method gets columns types in table
+     \return arraylist contained types names
+     */
     public ArrayList<String> getColumnTypes(String tableName) {
         ArrayList<String> nameOfTypes=new ArrayList<String>();
 
@@ -80,7 +92,10 @@ public class Table {
         }
         return nameOfTypes;
     }
-    //this method is created, to checking all records in table
+    /**
+     \brief method gets records in table
+     \return arraylist with records in table
+     */
     public ArrayList<ArrayList<String>> getTableRecords(){
         ArrayList<ArrayList<String>> listToReturn=new ArrayList<ArrayList<String>>();
         try {
@@ -99,7 +114,10 @@ public class Table {
         }
         return listToReturn;
     }
-    //this is private method, which allow me join all of information about column
+    /**
+     \brief method check information about column
+     \return String which presents type of columns
+     */
     private String checkType(Integer type,String typeName, int size, boolean increment, int notnull, String defaultValue){
         StringBuilder newType;
         if(sqlTypes.containsKey(type))

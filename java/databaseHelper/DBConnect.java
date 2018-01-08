@@ -13,11 +13,15 @@ import java.util.Properties;
 import com.jcraft.jsch.*;
 
 /**
+ * \class DBConnect provide information This object allows tunneling by ssh and connecting to database.
  * Created by radoslaw on 20.09.17.
  */
 public class DBConnect {
     public Connection conn=null;
     public static boolean portIsFree=true;
+    /**
+     \brief this constructor tunneling by ssh if tunnel isn't establish, and set Connection object
+     */
     DBConnect() {
         try {
             //object Connection I receive from static method getConnection
@@ -35,6 +39,10 @@ public class DBConnect {
             e.printStackTrace();
         }
     }
+    /**
+     \brief this function tunneling by ssh with JSch class
+     \throws JSchException, IOException
+     */
     private void sshTunneling() throws JSchException, IOException {
         Properties props = new Properties();
         try
@@ -85,6 +93,11 @@ public class DBConnect {
         assigned_port = session.setPortForwardingL(local_port, remote_host, remote_port);
         portIsFree=false;
     }
+    /**
+     \brief this function create object Connection, establish connection to postgresql database, and return this object
+     \return Connection - connection to postgresql database
+     \throws JSchException, IOException
+     */
     private Connection getConnection() throws SQLException, IOException
     {
         //I assume information about database from file database.properties

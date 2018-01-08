@@ -15,7 +15,16 @@ import javax.servlet.http.HttpServletResponse;
         name = "QueryServlet",
         urlPatterns = {"/query"}
 )
+/**
+ \class QueryServlet provide information Available on executing every query
+ */
 public class QueryServlet extends HttpServlet {
+    /**
+     \brief doGet function obtain data by get method, processed it and send to jsp
+     \param[in] request object, which passes argument to jsp
+     \param[in] response object, which obtain argument from jsp
+     \throws ServletException, IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

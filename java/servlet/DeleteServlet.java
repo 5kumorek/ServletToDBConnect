@@ -16,8 +16,17 @@ import javax.servlet.http.HttpServletResponse;
         name = "DeleteServlet",
         urlPatterns = {"/delete"}
 )
+/**
+ \class DeleteServlet provide information Provide availability of deleting records
+ */
 public class DeleteServlet extends HttpServlet {
 
+    /**
+     \brief doGet function obtain data by get method, processed it and send to jsp
+     \param[in] request object, which passes argument to jsp
+     \param[in] response object, which obtain argument from jsp
+     \throws ServletException, IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

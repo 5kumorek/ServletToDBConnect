@@ -9,6 +9,9 @@ import static java.sql.Types.*;
 /**
  * Created by radoslaw on 20.09.17.
  */
+/**
+ * \class InsertRecord provide information This object allows on inserting records to database.
+ */
 //this class is responsible for insert new record to table
 public class InsertRecord {
 
@@ -21,6 +24,10 @@ public class InsertRecord {
     ArrayList<String> row;
     ArrayList<String> values;
 
+    /**
+     \brief Constructor initialize DBConnect object and initialize global variables
+     \param[in] tableName - name of table from will be processed
+     */
     public InsertRecord(String tableName){
         this.tableName  = tableName;
         database = new DBConnect();
@@ -32,6 +39,11 @@ public class InsertRecord {
         row=new ArrayList<String>();
         values=new ArrayList<String>();
     }
+    /**
+     \brief this function create query from obtained Strings and execute it. Additional if exception was throw, then set exception
+     \param[in] dataFromForm - array of String, which should be processed and inserted to database
+     \throws SQLException
+     */
     public boolean insertRecord(String dataFromForm[]) throws SQLException {
 
         //firstly I check correctness of data
@@ -68,6 +80,10 @@ public class InsertRecord {
 
         return true;
     }
+    /**
+     \brief this function check types of arguments and provide safety insertion to database.
+     \param[in] dataFromForm - variables to check
+     */
     private boolean checkValues(String[] dataFromForm){
         try {
             String query = "SELECT * FROM " + tableName + ";";
@@ -91,6 +107,11 @@ public class InsertRecord {
         }
         return true;
     }
+    /**
+     \brief this function create object Connection, establish connection to postgresql database, and return this object
+     \param[in] recordToDelete - index of record to deleting
+     \throws SQLException
+     */
     public String getException(){
         return this.exception;
     }

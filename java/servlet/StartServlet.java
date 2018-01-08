@@ -16,8 +16,17 @@ import javax.servlet.http.HttpServletResponse;
         name = "StartServlet",
         urlPatterns = {"/start"}
 )
+/**
+ \class StartServlet provide information Provide information about all tables in database
+ */
 public class StartServlet extends HttpServlet {
 
+    /**
+     \brief doGet function obtain data by get method, processed it and send to jsp
+     \param[in] request object, which passes argument to jsp
+     \param[in] response object, which obtain argument from jsp
+     \throws ServletException, IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

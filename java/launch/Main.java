@@ -8,8 +8,16 @@ import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.webresources.DirResourceSet;
 import org.apache.catalina.webresources.StandardRoot;
 
+/**
+  \class Main class with Establish tomcat server
+ */
 public class Main {
 
+    /**
+      \brief main function
+      \param[in] args - argument from commang line
+      \throws Exception
+     */
     public static void main(String[] args) throws Exception {
 
         String webappDirLocation = "src/main/webapp/";
